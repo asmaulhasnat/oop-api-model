@@ -1,0 +1,15 @@
+{
+    "name": "sweet/backend-panel",
+    "authors": [
+        {
+            "name": "asmaulhasnat",
+            "email": "asmaulhasnat1311@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "./app"
+        }
+    },
+    "require": {}
+}

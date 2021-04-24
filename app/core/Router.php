@@ -16,6 +16,24 @@ class Router
     public function get($path,$callback){
         $this->routes['get'][$path] = $callback;
     }
+    public function post($path,$callback){
+        $this->routes['post'][$path] = $callback;
+    }
+    public function put($path,$callback){
+        $this->routes['put'][$path] = $callback;
+    }
+    public function patch($path,$callback){
+        $this->routes['patch'][$path] = $callback;
+    }
+    public function delete($path,$callback){
+        $this->routes['delete'][$path] = $callback;
+    }
+    public function options($path,$callback){
+        $this->routes['options'][$path] = $callback;
+    }
+    public function view($path,$callback){
+        $this->routes['view'][$path] = $callback;
+    }
 
 
     public function resolve(){
@@ -24,20 +42,20 @@ class Router
         $callback =$this->routes[$method][$path] ?? false;
         if ($callback == false){
             $this->response->setStatusCode(404);
-            return  "Not found";
+            return  $this->renderView('_404');
 
         }
         if (is_string($callback)){
             return $this->renderView($callback);
         }
-//        echo '<pre>';
-//        var_dump($callback);
-//        echo '</pre>';
-        return call_user_func($callback);
+        if (is_array($callback)){
+            $callback[0] = new $callback[0]();
+        }
+        return call_user_func($callback,$this->request);
     }
-    public function renderView($view){
+    public function renderView($view,$params =[]){
         $layoutContent = $this->layoutContent();
-        $viewContent =$this->renderOnlyView($view);
+        $viewContent =$this->renderOnlyView($view,$params);
         return str_replace('{{content}}',$viewContent,$layoutContent);
 
         include_once Application::$ROOT_DIR."/resources/views/$view.php";
@@ -50,7 +68,10 @@ class Router
         return ob_get_clean();
 
     }
-    public function renderOnlyView($view){
+    public function renderOnlyView($view,$params){
+        foreach ($params as $key=>$value){
+            $$key = $value;
+        }
         ob_start();
         include_once Application::$ROOT_DIR."/resources/views/$view.php";
         return ob_get_clean();

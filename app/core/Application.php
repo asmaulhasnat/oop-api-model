@@ -2,6 +2,8 @@
 
 namespace App\core;
 
+use App\http\controllers\Controller;
+
 class Application
 {
     public Router  $router;
@@ -9,6 +11,23 @@ class Application
     public Response  $response;
     public static string  $ROOT_DIR;
     public static Application $app;
+    public Controller $controller;
+
+    /**
+     * @return Controller
+     */
+    public function getController(): Controller
+    {
+        return $this->controller;
+    }
+
+    /**
+     * @param Controller $controller
+     */
+    public function setController(Controller $controller): void
+    {
+        $this->controller = $controller;
+    }
     public function __construct($rootpath){
         self::$app =$this;
         $this->request = new  Request();

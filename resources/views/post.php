@@ -1,0 +1,1 @@
+<h1>check post is working <?php echo $name; ?></h1>

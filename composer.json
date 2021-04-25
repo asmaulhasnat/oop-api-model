@@ -15,6 +15,7 @@
     "require": {
         "illuminate/database": "^8.38",
         "illuminate/events": "^8.38",
-        "vlucas/phpdotenv": "^5.3"
+        "vlucas/phpdotenv": "^5.3",
+        "firebase/php-jwt": "^5.2"
     }
 }

@@ -4,6 +4,7 @@ namespace App\core;
 
 use App\http\controllers\Controller;
 
+
 class Application
 {
     public Router  $router;
@@ -12,6 +13,7 @@ class Application
     public static string  $ROOT_DIR;
     public static Application $app;
     public Controller $controller;
+
 
     /**
      * @return Controller
@@ -32,6 +34,8 @@ class Application
         self::$app =$this;
         $this->request = new  Request();
         $this->response = new  Response();
+        //$this->DB = new DB();
+
         $this->router = new  Router($this->request, $this->response);
         self::$ROOT_DIR = $rootpath;
     }

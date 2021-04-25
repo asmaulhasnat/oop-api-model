@@ -9,7 +9,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "./app"
-        }
+        },
+        "files": ["./app/core/db.php"]
     },
-    "require": {}
+    "require": {
+        "illuminate/database": "^8.38",
+        "illuminate/events": "^8.38",
+        "vlucas/phpdotenv": "^5.3"
+    }
 }

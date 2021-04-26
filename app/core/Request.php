@@ -1,6 +1,7 @@
 <?php
 namespace App\core;
-class Request 
+use Illuminate\Http\Request as Rq;
+class Request  extends Rq
 {
     public function getPath(){
         $path = $_SERVER['REQUEST_URI'] ?? '/';
@@ -30,7 +31,17 @@ class Request
                 $body [$key] =filter_input(INPUT_POST, $key,FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
+
         return $body;
+    }
+
+    public function getHeaderToken(){
+       $authorization =$_SERVER['HTTP_AUTHORIZATION'] ?? false;
+       if ($authorization){
+           return $token = explode("Bearer ",$authorization)[1] ?? false;
+       }
+       return false;
+
     }
 
 }

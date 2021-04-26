@@ -41,6 +41,18 @@ class Application
     }
     
     public function run(){
-        echo $this->router->resolve();
+        try {
+            echo  $this->router->resolve();
+        }catch(\Exception $exception){
+            http_response_code(403);
+             $responsemessage =[
+                'status'=>'403',
+                'message' =>'Unauthorized or   '.$exception->getMessage(),
+                'data' =>[],
+
+            ];
+            echo  json_encode($responsemessage);
+        }
+
     }
 }

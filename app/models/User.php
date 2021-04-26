@@ -2,9 +2,14 @@
 
 
 namespace App\models;
-
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    Protected $table ='users';
+
+    protected $hidden = [
+        'password',
+    ];
 
 }

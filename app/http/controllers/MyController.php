@@ -3,15 +3,17 @@
 
 namespace App\http\controllers;
 
+use App\models\User;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use App\core\Application;
 use App\core\Request;
+use App\core\Response;
 
 
 class MyController extends Controller
 {
     public function index(Request $request){
-        return $users = Capsule::table('users')->where('id',1)->get();
+         $user= new User();
         return $this->render('contact');
     }
     public function post(Request $request){

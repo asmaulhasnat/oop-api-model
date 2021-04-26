@@ -16,6 +16,10 @@
         "illuminate/database": "^8.38",
         "illuminate/events": "^8.38",
         "vlucas/phpdotenv": "^5.3",
-        "firebase/php-jwt": "^5.2"
+        "firebase/php-jwt": "^5.2",
+        "bramus/router": "^1.5",
+        "illuminate/hashing": "^8.38",
+        "illuminate/http": "^8.38",
+        "guzzlehttp/guzzle": "^7.3"
     }
 }

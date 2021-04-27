@@ -19,7 +19,7 @@ class AuthController extends Controller
         $message='';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $register= new UserValidation();
             $register->loadData($request->getBody());
             if ($register->validate()){
@@ -41,7 +41,7 @@ class AuthController extends Controller
                 $data=$register->errors;
             }
 
-        }
+
         $responsemessage =[
             'status'=>$status_code,
             'message' =>$message,
@@ -58,7 +58,7 @@ class AuthController extends Controller
         $massage='';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $login= new loginValidation();
             $login->loadData($request->getBody());
             if ($login->validate()){
@@ -90,7 +90,7 @@ class AuthController extends Controller
                 $data=$login->errors;
             }
 
-        }
+
 
         $responsemessage =[
             'status'=>http_response_code($status_code),

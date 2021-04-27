@@ -49,7 +49,6 @@ class AdminController extends Controller
         $message='Method not support';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
 
             $image_file =$_FILES['image'] ?? false;
             if ($image_file){
@@ -90,7 +89,7 @@ class AdminController extends Controller
                 $data=$productValid->errors;
             }
 
-        }
+
         $responsemessage =[
             'status'=>$status_code,
             'message' =>$message,
@@ -110,10 +109,10 @@ class AdminController extends Controller
         $message='Category';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $data['categories'] =Category::get();
             $data['product'] =Product::where('id',$request->getBody()['id'])->with('Category')->first();
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -131,7 +130,7 @@ class AdminController extends Controller
         $message='Method not support';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
 
 
 
@@ -177,7 +176,7 @@ class AdminController extends Controller
                 $data=$productValid->errors;
             }
 
-        }
+
         $responsemessage =[
             'status'=>$status_code,
             'message' =>$message,
@@ -230,10 +229,10 @@ class AdminController extends Controller
         $message='Category';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $data =Category::get();
 
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -250,10 +249,10 @@ class AdminController extends Controller
         $message='Category';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $data =Category::where('id',$request->getBody()['id'])->first();
 
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -270,7 +269,7 @@ class AdminController extends Controller
         $message='Method not support';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
 
             $categoryValid= new CategoryUpdateValidation();
             $categoryValid->loadData($request->getBody());
@@ -293,7 +292,7 @@ class AdminController extends Controller
                 $data=$categoryValid->errors;
             }
 
-        }
+
         $responsemessage =[
             'status'=>$status_code,
             'message' =>$message,
@@ -339,10 +338,10 @@ class AdminController extends Controller
         $message='all order';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
-            $data =Order::get();
 
-        }
+        $data =Order::get();
+
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -359,10 +358,10 @@ class AdminController extends Controller
         $message='Single Order';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+
             $data =Order::where('id',$request->getBody()['id'])->first();
 
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,

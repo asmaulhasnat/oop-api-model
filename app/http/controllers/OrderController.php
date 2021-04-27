@@ -25,11 +25,11 @@ class OrderController extends Controller
         $status_code=200;
         $data=[];
 
-        if ($request->getMethod() === 'post') {
+
             $data = Order::where('user_id',1)->with('Product')->get();
             $message ='Order items';
             $status_code=200;
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -50,11 +50,11 @@ class OrderController extends Controller
         $status_code=200;
         $data=[];
 
-        if ($request->getMethod() === 'post') {
+
             $data = Order::where('user_id',1)->where('id',$request->getBody()['id'])->with('Product')->first();
             $message ='Order items';
             $status_code=200;
-        }
+
 
         $responsemessage =[
             'status'=>$status_code,
@@ -73,7 +73,7 @@ class OrderController extends Controller
          $message='Method not support';
          $status_code=200;
          $data=[];
-         if ($request->getMethod() === 'post') {
+
              $orderValid= new OrderValidation();
              $orderValid->loadData($request->getBody());
              if ($orderValid->validate()){
@@ -94,7 +94,7 @@ class OrderController extends Controller
                  $data=$orderValid->errors;
              }
 
-         }
+
          $responsemessage =[
              'status'=>$status_code,
              'message' =>$message,

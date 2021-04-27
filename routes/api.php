@@ -61,8 +61,14 @@ $app->router->get('/about',function(){
 $app->router->post('/signin',[AuthController::class,'login']);
 $app->router->post('/signup',[AuthController::class,'store']);
 
+$app->router->get('/signin',[AuthController::class,'login']);
+$app->router->get('/signup',[AuthController::class,'store']);
+
 //authenticated route
 $app->router->post('/profile',[ProfileController::class,'index']);
+
+
+$app->router->get('/profile',[ProfileController::class,'index']);
 
 
 
@@ -71,6 +77,11 @@ $app->router->post('/category',[AdminController::class,'categoryAll']);
 $app->router->post('/category/create',[AdminController::class,'createCategory']);
 $app->router->post('/category/edit',[AdminController::class,'editCategory']);
 $app->router->post('/category/update',[AdminController::class,'updateCategory']);
+
+$app->router->get('/category',[AdminController::class,'categoryAll']);
+$app->router->get('/category/create',[AdminController::class,'createCategory']);
+$app->router->get('/category/edit',[AdminController::class,'editCategory']);
+$app->router->get('/category/update',[AdminController::class,'updateCategory']);
 
 
 
@@ -82,10 +93,24 @@ $app->router->post('/admin/order',[AdminController::class,'allOrders']);
 $app->router->post('/admin/order/update',[AdminController::class,'updateOrder']);
 $app->router->post('/admin/view',[AdminController::class,'viewOrder']);
 
+$app->router->get('/product',[AdminController::class,'allProduct']);
+$app->router->get('/product/create',[AdminController::class,'createProduct']);
+$app->router->get('/product/edit',[AdminController::class,'editProduct']);
+$app->router->get('/product/update',[AdminController::class,'updateProduct']);
+$app->router->get('/admin/order',[AdminController::class,'allOrders']);
+$app->router->get('/admin/order/update',[AdminController::class,'updateOrder']);
+$app->router->get('/admin/view',[AdminController::class,'viewOrder']);
+
 
 $app->router->post('/order',[OrderController::class,'index']);
 $app->router->post('/order/check',[OrderController::class,'getStatus']);
 $app->router->post('/order/create',[OrderController::class,'store']);
+
+
+
+$app->router->get('/order',[OrderController::class,'index']);
+$app->router->get('/order/check',[OrderController::class,'getStatus']);
+$app->router->get('/order/create',[OrderController::class,'store']);
 
 
 $app->router->get('/all-product',[PublicController::class,'index']);

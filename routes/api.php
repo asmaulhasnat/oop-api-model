@@ -30,6 +30,7 @@ use App\http\controllers\MyController;
 use App\http\controllers\ProfileController;
 use App\http\controllers\AdminController;
 use App\http\controllers\OrderController;
+use App\http\controllers\PublicController;
 
 /*
 * use controller here
@@ -85,6 +86,9 @@ $app->router->post('/admin/view',[AdminController::class,'viewOrder']);
 $app->router->post('/order',[OrderController::class,'index']);
 $app->router->post('/order/check',[OrderController::class,'getStatus']);
 $app->router->post('/order/create',[OrderController::class,'store']);
+
+
+$app->router->get('/all-product',[PublicController::class,'index']);
 
 
 

@@ -20,6 +20,7 @@
         "bramus/router": "^1.5",
         "illuminate/hashing": "^8.38",
         "illuminate/http": "^8.38",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.3",
+        "intervention/image": "^2.5"
     }
 }

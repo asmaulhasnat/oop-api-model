@@ -15,6 +15,7 @@ use App\validation\ProductStoreValidation;
 use App\validation\ProductUpdateValidation;
 
 use App\models\Category;
+use Intervention\Image\ImageManager;
 
 class AdminController extends Controller
 {
@@ -44,10 +45,27 @@ class AdminController extends Controller
     }
     public function createProduct(Request $request){
 
+
         $message='Method not support';
         $status_code=200;
         $data=[];
         if ($request->getMethod() === 'post') {
+
+            $image_file =$_FILES['image'] ?? false;
+            if ($image_file){
+                $manager = new ImageManager();
+                // resize image
+                $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
+
+                // save image
+                $file_name='images\\'.time().$image_file['name'];
+                $image->save($file_name);
+            }
+            else{
+                $file_name=null;
+            }
+
+
             $productValid= new ProductStoreValidation();
             $productValid->loadData($request->getBody());
             if ($productValid->validate()){
@@ -57,7 +75,7 @@ class AdminController extends Controller
                 $product->description = $request->getBody()['description'] ?? '';
                 $product->category_id = $request->getBody()['category_id'] ?? '';
                 $product->price = $request->getBody()['price'] ?? 0;
-                $product->image = $request->getBody()['image'] ?? '';
+                $product->image = $file_name;
                 if ($product->save()) {
                     $data=$product;
                     $message= 'Product created successfully';
@@ -115,10 +133,26 @@ class AdminController extends Controller
         $data=[];
         if ($request->getMethod() === 'post') {
 
+
+
             $productValid= new ProductUpdateValidation();
             $productValid->loadData($request->getBody());
 
             if ($productValid->validate()){
+
+                $image_file =$_FILES['image'] ?? false;
+                if ($image_file){
+                    $manager = new ImageManager();
+                    // resize image
+                    $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
+
+                    // save image
+                    $file_name='images\\'.time().$image_file['name'];
+                    $image->save($file_name);
+                }
+                else{
+                    $file_name=Product::where('id',$request->getBody()['id'])->first()->image ?? null;
+                }
 
                 $product = Product::where('id',$request->getBody()['id'])
                     ->update([
@@ -127,7 +161,7 @@ class AdminController extends Controller
                         'description'=>$request->getBody()['sku'] ?? '',
                         'category_id'=>$request->getBody()['category_id'] ?? '',
                         'price'=>$request->getBody()['price'] ?? '',
-                        'image'=>$request->getBody()['image'] ?? '',
+                        'image'=>$file_name,
                         ]);
                 if ($product) {
                     $data=$product;

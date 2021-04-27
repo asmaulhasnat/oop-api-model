@@ -11,7 +11,7 @@ class ProductUpdateValidation extends \App\core\Validator
     public  $description = '';
     public  $category_id = '';
     public  $price = '';
-    public  $image = '';
+    //public  $image = '';
     public  $id='';
 
     public static function tableName(): string
@@ -22,7 +22,11 @@ class ProductUpdateValidation extends \App\core\Validator
     public function labels(): array
     {
         return [
-            'name' => 'First name',
+            'name' => 'name',
+            'sku' => 'sku',
+            'description' => 'description',
+            'category_id' => 'Category',
+            'price' => 'price',
         ];
     }
 
@@ -37,7 +41,7 @@ class ProductUpdateValidation extends \App\core\Validator
             'description' => [self::RULE_REQUIRED],
             'category_id' => [self::RULE_REQUIRED],
             'price' => [self::RULE_REQUIRED],
-            'image' => [self::RULE_REQUIRED],
+            //'image' => [self::RULE_REQUIRED],
         ];
     }
 

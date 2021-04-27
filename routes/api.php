@@ -58,8 +58,8 @@ $app->router->get('/about',function(){
  * for test route
  */
 
-$app->router->post('/login',[AuthController::class,'login']);
-$app->router->post('/register',[AuthController::class,'store']);
+$app->router->post('/signin',[AuthController::class,'login']);
+$app->router->post('/signup',[AuthController::class,'store']);
 
 //authenticated route
 $app->router->post('/profile',[ProfileController::class,'index']);

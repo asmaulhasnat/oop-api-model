@@ -48,7 +48,7 @@ class AuthController extends Controller
             'data' =>$data,
 
         ];
-        http_response_code($status_code);
+        //http_response_code($status_code);
         return json_encode($responsemessage);
 
     }
@@ -93,12 +93,12 @@ class AuthController extends Controller
 
 
         $responsemessage =[
-            'status'=>http_response_code($status_code),
+            'status'=>$status_code,
             'message' =>$message,
             'data' =>$data,
 
         ];
-        http_response_code($status_code);
+        //http_response_code($status_code);
         return json_encode($responsemessage);
 
     }

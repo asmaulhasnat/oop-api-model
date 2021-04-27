@@ -58,7 +58,7 @@ class AdminController extends Controller
                 $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
 
                 // save image
-                $file_name=$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
+                $file_name='http://'.$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
                 $image->save('images\\'.time().$image_file['name']);
             }
             else{
@@ -147,7 +147,7 @@ class AdminController extends Controller
                     $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
 
                     // save image
-                    $file_name=$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
+                    $file_name='http://'.$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
                     $image->save('images\\'.time().$image_file['name']);
                 }
                 else{

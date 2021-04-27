@@ -58,8 +58,8 @@ class AdminController extends Controller
                 $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
 
                 // save image
-                $file_name='images\\'.time().$image_file['name'];
-                $image->save($file_name);
+                $file_name=$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
+                $image->save('images\\'.time().$image_file['name']);
             }
             else{
                 $file_name=null;
@@ -147,8 +147,8 @@ class AdminController extends Controller
                     $image=$manager->make($image_file['tmp_name'])->resize(584, 584);
 
                     // save image
-                    $file_name='images\\'.time().$image_file['name'];
-                    $image->save($file_name);
+                    $file_name=$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
+                    $image->save('images\\'.time().$image_file['name']);
                 }
                 else{
                     $file_name=Product::where('id',$request->getBody()['id'])->first()->image ?? null;

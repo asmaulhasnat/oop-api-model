@@ -12,7 +12,7 @@ class PublicController extends Controller
 
 
     public function index(Request $request){
-
+        //dump($_SERVER['HTTP_HOST']);
         $message='Method not support';
         $status_code=200;
         $data=[];

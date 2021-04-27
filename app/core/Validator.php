@@ -12,6 +12,7 @@ class Validator
     const RULE_MAX = 'max';
     const RULE_MATCH = 'match';
     const RULE_UNIQUE = 'unique';
+    const RULE_NOT_THIS ='notthis';
 
     public array $errors = [];
 
@@ -48,10 +49,13 @@ class Validator
     {
         foreach ($this->rules() as $attribute => $rules) {
             $value = $this->{$attribute};
+
             foreach ($rules as $rule) {
                 $ruleName = $rule;
+                $ruleName2 =false;
                 if (!is_string($rule)) {
                     $ruleName = $rule[0];
+                    $ruleName2 = $rule['not_in'] ?? false;
                 }
                 if ($ruleName === self::RULE_REQUIRED && !$value) {
                     $this->addErrorByRule($attribute, self::RULE_REQUIRED);
@@ -69,11 +73,15 @@ class Validator
                     $this->addErrorByRule($attribute, self::RULE_MATCH, ['match' => $rule['match']]);
                 }
                 if ($ruleName === self::RULE_UNIQUE) {
+
                     $className = $rule['class'];
                     $uniqueAttr = $rule['attribute'] ?? $attribute;
                     $tableName = $className::tableName();
-                    $record =DB::table($tableName)->where("$uniqueAttr","$uniqueAttr")->get();
-
+                    $record =DB::table($tableName)->where("$uniqueAttr","$value");
+                    if ($ruleName2){
+                        $record =$record->where("id",'!=',$this->id);
+                    }
+                    $record = $record->get();
                     if (count($record)) {
                         $this->addErrorByRule($attribute, self::RULE_UNIQUE);
                     }

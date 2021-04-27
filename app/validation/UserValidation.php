@@ -21,8 +21,8 @@ class UserValidation extends Validator
     public function labels(): array
     {
         return [
-            'name' => 'First name',
-            //'email' => 'Email',
+            'name' => 'name',
+            'email' => 'Email',
             'password' => 'Password',
             'password_conformation' => 'Password Confirm'
         ];

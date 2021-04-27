@@ -59,7 +59,7 @@ class AdminController extends Controller
 
                 // save image
                 $file_name='http://'.$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
-                $image->save('images\\'.time().$image_file['name']);
+                $image->save('images/'.time().$image_file['name']);
             }
             else{
                 $file_name=null;
@@ -148,7 +148,7 @@ class AdminController extends Controller
 
                     // save image
                     $file_name='http://'.$_SERVER['HTTP_HOST'].'/images/'.time().$image_file['name'];
-                    $image->save('images\\'.time().$image_file['name']);
+                    $image->save('images/'.time().$image_file['name']);
                 }
                 else{
                     $file_name=Product::where('id',$request->getBody()['id'])->first()->image ?? null;

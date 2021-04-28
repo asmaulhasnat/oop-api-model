@@ -16,7 +16,7 @@ class OrderController extends Controller
     public  $user =[];
     public function __construct()
     {
-        //$this->user = AuthorizationMiddleware::authentication(['user']);
+        $this->user = AuthorizationMiddleware::authentication(['user']);
     }
 
     public function index(Request $request){
@@ -78,8 +78,10 @@ class OrderController extends Controller
              $orderValid->loadData($request->getBody());
              if ($orderValid->validate()){
                  $order = new Order();
-                 $order->user_id = $request->getBody()['user_id'] ?? '';
+                 $order->user_id = $this->user['id'];
                  $order->items = $request->getBody()['items'] ?? '';
+                 $order->phone = $request->getBody()['phone'] ?? '';
+                 $order->address = $request->getBody()['address'] ?? '';
                  if ($order->save()) {
                      $data=$order;
                      $message= 'Order created successfully';

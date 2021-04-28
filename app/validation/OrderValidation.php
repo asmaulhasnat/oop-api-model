@@ -7,8 +7,8 @@ namespace App\validation;
 class OrderValidation extends \App\core\Validator
 {
 
-    //public string $user_id = '';
-    //public string $items = '';
+    public string $phone = '';
+    public string $address = '';
 
     public static function tableName(): string
     {
@@ -18,8 +18,8 @@ class OrderValidation extends \App\core\Validator
     public function labels(): array
     {
         return [
-            //'user_id' => 'user_id',
-            //'items' => 'items',
+            'phone' => 'phone',
+            'address' => 'address',
         ];
     }
 
@@ -29,6 +29,9 @@ class OrderValidation extends \App\core\Validator
         return [
             //'user_id' => [self::RULE_REQUIRED],
             //'items' => [self::RULE_REQUIRED],
+            'phone' => [self::RULE_REQUIRED],
+            'address' => [self::RULE_REQUIRED],
+
         ];
     }
 

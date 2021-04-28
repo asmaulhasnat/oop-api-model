@@ -103,7 +103,7 @@ class OrderController extends Controller
              'data' =>$data,
 
          ];
-         http_response_code($status_code);
+         //http_response_code($status_code);
          return json_encode($responsemessage);
 
 

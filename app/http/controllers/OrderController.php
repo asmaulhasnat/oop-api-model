@@ -51,7 +51,7 @@ class OrderController extends Controller
         $data=[];
 
 
-            $data = Order::where('user_id',1)->where('id',$request->getBody()['id'])->with('User')->with('Product')->first();
+            $data = Order::where('user_id',$request->getBody()['user_id'] ?? $this->user['id'])->where('id',$request->getBody()['id'])->with('User')->with('Product')->first();
             $message ='Order items';
             $status_code=200;
 

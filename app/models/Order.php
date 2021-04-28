@@ -13,5 +13,10 @@ class Order extends \Illuminate\Database\Eloquent\Model
         return $this->hasMany(Product::class, 'id','items->product_id');
     }
 
+    public function User()
+    {
+        return $this->hasOne(Product::class, 'id','user_id');
+    }
+
 
 }

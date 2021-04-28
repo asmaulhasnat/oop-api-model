@@ -26,7 +26,7 @@ class OrderController extends Controller
         $data=[];
 
 
-            $data = Order::where('user_id',1)->with('Product')->get();
+            $data = Order::where('user_id',$request->getBody()['user_id'] ?? $this->user['id'])->with('User')->with('Product')->get();
             $message ='Order items';
             $status_code=200;
 
@@ -51,7 +51,7 @@ class OrderController extends Controller
         $data=[];
 
 
-            $data = Order::where('user_id',1)->where('id',$request->getBody()['id'])->with('Product')->first();
+            $data = Order::where('user_id',1)->where('id',$request->getBody()['id'])->with('User')->with('Product')->first();
             $message ='Order items';
             $status_code=200;
 

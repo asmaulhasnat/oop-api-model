@@ -32,7 +32,7 @@ class AuthController extends Controller
                     $message= 'User register successfully';
                     $status_code =200;
                 } else {
-                    $message= ['registration_fail'=>'User register Fail'];
+                    $message= ['registration_fail'=>['User register Fail']];
                     $status_code =422;
                 }
             }else{
@@ -81,7 +81,7 @@ class AuthController extends Controller
                     $data=['user'=>$user,'access_token'=>$jwt];
                     $message= 'Login';
                 } else {
-                    $message= ['match_error'=>'Email or Password does not match'];
+                    $message= ['match_error'=>['Email or Password does not match']];
                     $status_code =422;
                 }
 

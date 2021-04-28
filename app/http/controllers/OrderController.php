@@ -46,9 +46,9 @@ class OrderController extends Controller
 
     public function getStatus(Request $request){
 
-        $po=jason_decode(file_get_contents('php://input'),true);
+        //$po=jason_decode(file_get_contents('php://input'),true);
 
-        return dump($po);
+        return dump($request->getBody());
         $message='Method not support';
         $status_code=200;
         $data=[];

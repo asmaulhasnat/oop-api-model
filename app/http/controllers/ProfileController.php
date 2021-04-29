@@ -11,10 +11,11 @@ class ProfileController extends Controller
     public  $user =[];
     public function __construct()
     {
-       $this->user = AuthorizationMiddleware::authentication(['user']);
+       $this->user = AuthorizationMiddleware::authentication(['user','admin']);
     }
     public function index(Request $request){
-        return $user_data = $this->user['name'];
+        $user = User::where('id',$this->user['id'])->first();
+        return json_encode($user);
     }
 
 }

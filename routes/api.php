@@ -114,6 +114,7 @@ $app->router->get('/order/create',[OrderController::class,'store']);
 
 
 $app->router->get('/all-product',[PublicController::class,'index']);
+$app->router->post('/all-product',[PublicController::class,'index']);
 
 
 

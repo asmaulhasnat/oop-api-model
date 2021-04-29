@@ -1,8 +1,0 @@
-[28-Apr-2021 10:40:13 America/New_York] PHP Notice:  Undefined index: user_id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 82
-[28-Apr-2021 10:40:18 America/New_York] PHP Notice:  Undefined index: user_id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 82
-[28-Apr-2021 10:40:25 America/New_York] PHP Notice:  Undefined index: user_id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 82
-[28-Apr-2021 10:40:43 America/New_York] PHP Notice:  Undefined index: user_id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 82
-[28-Apr-2021 12:18:40 America/New_York] PHP Notice:  Undefined index: id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 55
-[28-Apr-2021 12:18:40 America/New_York] PHP Notice:  Undefined index: id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 55
-[28-Apr-2021 12:18:42 America/New_York] PHP Notice:  Undefined index: id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 55
-[28-Apr-2021 12:19:37 America/New_York] PHP Notice:  Undefined index: id in /home/ahswfmbw/api.ahsweet.me/app/http/controllers/OrderController.php on line 55

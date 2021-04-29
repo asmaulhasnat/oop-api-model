@@ -22,7 +22,7 @@ class AdminController extends Controller
     public  $user =[];
     public function __construct()
     {
-        //$this->user = AuthorizationMiddleware::authentication(['user']);
+        $this->user = AuthorizationMiddleware::authentication(['admin']);
     }
     public function allProduct(Request $request){
 

@@ -11,7 +11,7 @@ class UserValidation extends Validator
     public string $name = '';
     public string $email = '';
     public string $password = '';
-    public string $password_conformation = '';
+    public string $password_confirmation = '';
 
     public static function tableName(): string
     {
@@ -24,7 +24,7 @@ class UserValidation extends Validator
             'name' => 'name',
             'email' => 'Email',
             'password' => 'Password',
-            'password_conformation' => 'Password Confirm'
+            'password_confirmation' => 'Password Confirm'
         ];
     }
 
@@ -37,7 +37,7 @@ class UserValidation extends Validator
                 self::RULE_UNIQUE, 'class' => self::class
             ]],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8]],
-            'password_conformation' => [[self::RULE_MATCH, 'match' => 'password']],
+            'password_confirmation' => [[self::RULE_MATCH, 'match' => 'password']],
         ];
     }
 }

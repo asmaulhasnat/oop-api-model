@@ -29,10 +29,10 @@ class AdminController extends Controller
         $message='Product';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
-            $data =Product::with('Category')->get();
+        
+        $data['product'] =Product::with('Category')->get();
+        $data['category'] =Category::get();
 
-        }
 
         $responsemessage =[
             'status'=>$status_code,
@@ -156,8 +156,8 @@ class AdminController extends Controller
                 $product = Product::where('id',$request->getBody()['id'])
                     ->update([
                         'name'=>$request->getBody()['name'] ?? '',
-                        'sku'=>$request->getBody()['name'] ?? '',
-                        'description'=>$request->getBody()['sku'] ?? '',
+                        'sku'=>$request->getBody()['sku'] ?? '',
+                        'description'=>$request->getBody()['description'] ?? '',
                         'category_id'=>$request->getBody()['category_id'] ?? '',
                         'price'=>$request->getBody()['price'] ?? '',
                         'image'=>$file_name,
@@ -183,7 +183,7 @@ class AdminController extends Controller
             'data' =>$data,
 
         ];
-        http_response_code($status_code);
+        //http_response_code($status_code);
         return json_encode($responsemessage);
 
     }
@@ -194,7 +194,7 @@ class AdminController extends Controller
         $message='Method not support';
         $status_code=200;
         $data=[];
-        if ($request->getMethod() === 'post') {
+        
             $categoryValid= new CategoryStoreValidateion();
             $categoryValid->loadData($request->getBody());
             if ($categoryValid->validate()){
@@ -214,14 +214,14 @@ class AdminController extends Controller
                 $data=$categoryValid->errors;
             }
 
-        }
+        
         $responsemessage =[
             'status'=>$status_code,
             'message' =>$message,
             'data' =>$data,
 
         ];
-        http_response_code($status_code);
+        //http_response_code($status_code);
         return json_encode($responsemessage);
 
     }
@@ -339,7 +339,7 @@ class AdminController extends Controller
         $status_code=200;
         $data=[];
 
-        $data =Order::get();
+        $data =Order::with('User')->get();
 
 
 

@@ -10,5 +10,9 @@ class Product extends \Illuminate\Database\Eloquent\Model
     public function Category(){
         return $this->hasOne(Category::class,'id','category_id');
     }
+    
+     public function User(){
+        return $this->hasOne(User::class,'id','created_by');
+    }
 
 }
